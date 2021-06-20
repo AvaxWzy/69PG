@@ -12,14 +12,30 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.*/
 
+const { Client } = require("discord.js");
+
 class Command {
+    /**
+     * @param {Client} client 
+     */
     constructor(client, options = {
         name: "",
-        cooldown: 0
+        description: "",
+        aliases: [],
+        cooldown: 0,
+        clientPermissions: [],
+        memberPermissions: []
     }) {
         this.client = client;
+        this.emoji = require("../config/emoji.json");
+        this.config = require("../config/bot.json");
+
         this.name = options.name;
+        this.description = 
+        this.aliases = options.aliases;
         this.cooldown = options.cooldown;
+        this.clientPermissions = options.clientPermissions;
+        this.memberPermissions = options.memberPermissions;
     };
     /**
      * @param {import { Message } from "discord.js";} message 
