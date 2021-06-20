@@ -12,7 +12,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.*/
 
-const { Message } = require("discord.js");
 const Command = require("../../class/Command");
 
 class unban extends Command {
@@ -25,10 +24,7 @@ class unban extends Command {
             memberPermissions: ["BAN_MEMBERS"]
         });
     };
-    /**
-     * @param {Message} message
-     * @param {String[]} args
-     */
+
     async exec(message, args) {
 
         const userid = args[0];
