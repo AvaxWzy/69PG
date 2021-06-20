@@ -1,4 +1,11 @@
 {
-    "token": "Discord Token",
-    "prefix": ""
+    "token": "Discord Client Token",
+    "prefix": "!",
+    "invite": {
+        "url": "https://discord.com/oauth2/authorize?client_id=766267194073939968&scope=bot&permissions=125986"
+    },
+    "embed": {
+        "color": "#747fff",
+        "footer": ""
+    }
 }
