@@ -1,0 +1,14 @@
+{
+  "name": "69pg",
+  "version": "1.0.0",
+  "description": "69PG is a very pog discord bot than all pg bot in the history",
+  "main": "src/index.js",
+  "repository": "https://github.com/AvaxWzy/69PG",
+  "author": "Avax",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "glob": "^7.1.7",
+    "moment": "^2.29.1"
+  }
+}
