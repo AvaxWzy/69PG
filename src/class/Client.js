@@ -25,6 +25,26 @@ class Client extends require("discord.js").Client {
         this.commands = new (require("discord.js").Collection)();
         this.aliases = new (require("discord.js").Collection)();
         this.cooldowns = new (require("discord.js").Collection)();
+        this.config = require("../config/bot.json");
+        this.snipes = new (require("discord.js").Collection)();
+    };
+
+    database(url) {
+
+        if (!url || typeof(url) !== "string") {
+            throw new TypeError("Url is not provided");
+        };
+
+        require("mongoose").connect(url, {
+            useUnifiedTopology: true,
+            useCreateIndex: true,
+            useFindAndModify: false,
+            useNewUrlParser: true
+        });
+
+        require("mongoose").connection.on("connected", () => {
+            console.log("Mongodb > Connected");
+        });
     };
 };
 
