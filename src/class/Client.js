@@ -24,6 +24,7 @@ class Client extends require("discord.js").Client {
 
         this.commands = new (require("discord.js").Collection)();
         this.aliases = new (require("discord.js").Collection)();
+        this.cooldowns = new (require("discord.js").Collection)();
     };
 };
 
