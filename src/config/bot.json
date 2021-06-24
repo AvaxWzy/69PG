@@ -7,5 +7,6 @@
     "embed": {
         "color": "#747fff",
         "footer": ""
-    }
+    },
+    "mongourl": "Mongodb Connection Url"
 }
