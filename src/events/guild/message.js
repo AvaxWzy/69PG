@@ -20,8 +20,8 @@ class message extends Event {
             name: "message"
         });
     };
-    
-    async exec (message) {
+
+    async exec(message) {
 
         if (message.author.bot) {
             return;
@@ -42,21 +42,22 @@ class message extends Event {
 
         if (command) {
 
-            if (command.clientPermissions) {
-
-                let array = [];
-
-                command.clientPermissions.forEach(x => {
-                    
-                    if (!message.guild.me.hasPermission(x)) {
-                        array.push(x);
-                    };
-                });
-
-                if (array.length) {
-                    return;
-                };
+            if (!this.client.cooldowns.has(command.name)) {
+                this.client.cooldowns.set(command.name, new (require("discord.js").Collection)());
             };
+
+            const now = Date.now();
+            const time = this.client.cooldowns.get(command.name);
+            const cooldown = (command.cooldown || 5) * 1000;
+
+            const expiry = time.get(message.author.id) + cooldown;
+
+            if (now < expiry) {
+                return;
+            }
+
+            time.set(message.author.id, now);
+            setTimeout(() => time.delete(message.author.id), cooldown);
 
             if (command.memberPermissions) {
 
@@ -65,13 +66,29 @@ class message extends Event {
                 command.memberPermissions.forEach(x => {
 
                     if (!message.member.hasPermission(x)) {
-                        array.push(x);
+                        array.push("\n`" + x + "`");
                     };
 
                     if (array.length) {
-                        return;
+                        return message.channel.send(`You need the following permissions: \n${array.join("\n")}`)
                     };
                 });
+            };
+
+            if (command.clientPermissions) {
+
+                let array = [];
+
+                command.clientPermissions.forEach(x => {
+
+                    if (!message.guild.me.hasPermission(x)) {
+                        array.push("\n`" + x + "`");
+                    };
+                });
+
+                if (array.length) {
+                    return message.channel.send(`I need the following permissions: \n${array.join("\n")}`);
+                };
             };
 
             command.exec(message, args);
