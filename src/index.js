@@ -19,4 +19,6 @@ const client = new Client();
     require(`./handlers/${x}`)(client);
 });
 
+client.database(require("./config/bot.json").mongourl);
+
 client.login(require("./config/bot.json").token);
