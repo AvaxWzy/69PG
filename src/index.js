@@ -19,6 +19,6 @@ const client = new Client();
     require(`./handlers/${x}`)(client);
 });
 
-client.database(require("./config/bot.json").mongourl);
+client.database(process.env.mongourl || require("./config/bot.json").mongourl);
 
 client.login(process.env.token || require("./config/bot.json").token);
