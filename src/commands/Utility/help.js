@@ -33,7 +33,7 @@ class help extends Command {
             return message.channel.send({
                 embed: {
                     title: "Help",
-                    description: `For a specific command help. Simply use \`!help <command>\`\nIf you have any command suggestion or want to hang out. Join our [server](${this.config.discord.server})`,
+                    description: `For a specific command help. Simply use \`!help <command>\`\nIf you have any command suggestion or want to hang out. Join our [server](${this.client.config.discord.server})`,
                     color: this.config.embed.color,
                     fields: [
                         {
