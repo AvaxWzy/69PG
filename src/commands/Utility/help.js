@@ -38,11 +38,11 @@ class help extends Command {
                     fields: [
                         {
                             name: "Moderation",
-                            value: "`kick`, `ban`, `unban`, `clear`, `nuke`"
+                            value: "`kick`, `ban`, `unban`, `clear`, `nuke`, `snipe`, `warn`"
                         },
                         {
                             name: "Utility",
-                            value: "`help`, `invite`, `whois`"
+                            value: "`help`, `invite`, `whois`, `bot`"
                         }
                     ]
                 }
