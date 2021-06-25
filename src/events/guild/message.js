@@ -31,7 +31,9 @@ class message extends Event {
             return;
         };
 
-        if (!message.content.startsWith(require("../../config/bot.json").prefix));
+        if (!message.content.startsWith(require("../../config/bot.json").prefix)) {
+            return;
+        };
 
         const args = message.content.slice(require("../../config/bot.json").prefix.length).trim().split(/ +/g);
         const name = args.shift().toLowerCase();
