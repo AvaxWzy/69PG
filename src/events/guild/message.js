@@ -13,6 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.*/
 
 const Event = require("../../class/Event");
+const Schema = require("../../models/config");
 
 class message extends Event {
     constructor(client) {
@@ -23,6 +24,16 @@ class message extends Event {
 
     async exec(message) {
 
+        let prefix;
+
+        const schema = await Schema.findOne({ _id: message.guild.id });
+
+        if (!schema) {
+            prefix = require("../../config/bot.json").prefix; 
+        } else {
+            prefix = schema.prefix;
+        };
+
         if (message.author.bot) {
             return;
         };
@@ -31,11 +42,11 @@ class message extends Event {
             return;
         };
 
-        if (!message.content.startsWith(require("../../config/bot.json").prefix)) {
+        if (!message.content.startsWith(prefix)) {
             return;
         };
 
-        const args = message.content.slice(require("../../config/bot.json").prefix.length).trim().split(/ +/g);
+        const args = message.content.slice(prefix.length).trim().split(/ +/g);
         const name = args.shift().toLowerCase();
 
         let command = this.client.commands.get(name);
