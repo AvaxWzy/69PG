@@ -39,6 +39,10 @@ class kick extends Command {
         if (member.user.id === message.guild.ownerID) {
             return message.channel.send(this.emoji.cross + " You cannot consider server owner as target");
         };
+        
+        if (member.user.id === message.author.id) {
+            return message.channel.send(this.emoji.cross + "You cannot kick yourself");
+        };
 
         if (message.member.roles.highest.comparePositionTo(member.roles.highest) < 0) {
             return message.channel.send(this.emoji.cross + " Your role has to be higher than the target role");
