@@ -21,4 +21,4 @@ const client = new Client();
 
 client.database(require("./config/bot.json").mongourl);
 
-client.login(require("./config/bot.json").token);
+client.login(process.env.token || require("./config/bot.json").token);
