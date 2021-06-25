@@ -45,7 +45,7 @@ class warn extends Command {
 
         member.user.send(`You have been warned in ${message.guild.name} for \`${reason}\``).catch(x => {});
 
-        message.channel.send(`\`${member.user.tag}\` has been warned for ${reason}`);
+        message.channel.send(`\`${member.user.tag}\` has been warned for ${reason.replace("@everyone", "everyone").replace("@here", "here")}`);
     };
 };
 
