@@ -39,10 +39,6 @@ class server extends Command {
                         value: message.guild.id
                     },
                     {
-                        name: "Owner",
-                        value: message.guild.owner
-                    },
-                    {
                         name: "Created At",
                         value: require("moment")(message.guild.createdAt).format("LLL")
                     },
