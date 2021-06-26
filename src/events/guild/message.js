@@ -81,11 +81,11 @@ class message extends Event {
                     if (!message.member.hasPermission(x)) {
                         array.push("\n`" + x + "`");
                     };
-
-                    if (array.length) {
-                        return message.channel.send(`You need the following permissions: \n${array.join("\n")}`)
-                    };
                 });
+                
+                if (array.length) {
+                    return message.channel.send(`You need the following permissions: \n${array.join("\n")}`)
+                };
             };
 
             if (command.clientPermissions) {
