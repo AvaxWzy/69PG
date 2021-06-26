@@ -74,7 +74,7 @@ class prefix extends Command {
             } else {
 
                 if (prefix === require("../../config/bot.json").prefix) {
-                    return Schema.findOneAndDelete({ id: message.guild.id }).then(() => {
+                    return await Schema.findOneAndDelete({ _id: message.guild.id }).then(() => {
                         return message.channel.send(this.emoji.tick + " Prefix has been reset");
                     });
                 };
