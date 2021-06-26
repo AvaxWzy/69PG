@@ -2,7 +2,7 @@
     "token": "Discord Client Token",
     "prefix": "!",
     "discord": {
-        "server": "https://discord.gg/AVv3AkazGJ"
+        "server": "https://discord.gg/f6Ky3QUvUF"
     },
     "invite": {
         "url": "https://discord.com/oauth2/authorize?client_id=766267194073939968&scope=bot&permissions=125986"
