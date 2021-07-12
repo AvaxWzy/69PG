@@ -30,22 +30,34 @@ class warn extends Command {
         const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
 
         if (!member) {
-            return message.channel.send(this.emoji.cross + " You have to mention or give the target id");
+            return message.channel.send({ content: this.emoji.cross + " You have to mention or give the target id"});
+        };
+
+        if (member.user.id === message.author.id) {
+            return message.channel.send({ content: this.emoji.cross + " You cannot warn yourself. || Cry about it ||"});
+        };
+
+        if (member.user.id === message.guild.ownerID) {
+            return message.channel.send({ content: this.emoji.cross + " || You tried 👍||"});
+        };
+
+        if (member.user.bot) {
+            return message.channel.send({ content: this.emoji.cross + " Imagine sending friend request to a bot :)"});
         };
 
         const reason = args.slice(1).join(" ");
 
         if (!reason) {
-            return message.channel.send(this.emoji.cross + " You have to give a reason");
+            return message.channel.send({ content: this.emoji.cross + " You have to give a reason"});
         };
 
         if (reason.length > 250) {
-            return message.channel.send(this.emoji.cross + " Reason must be below 250 chars");
+            return message.channel.send({ content: this.emoji.cross + " Reason must be below 250 chars"});
         };
 
-        member.user.send(`You have been warned in ${message.guild.name} for \`${reason}\``).catch(x => {});
+        member.user.send({ content: `You have been warned in ${message.guild.name} for \`${reason}\``}).catch(x => {});
 
-        message.channel.send(`\`${member.user.tag}\` has been warned for ${reason.replace("@everyone", "everyone").replace("@here", "here")}`);
+        message.channel.send({ content: `\`${member.user.tag}\` has been warned for ${reason.replace("@everyone", "everyone").replace("@here", "here")}`});
     };
 };
 
