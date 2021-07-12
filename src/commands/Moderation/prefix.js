@@ -36,26 +36,26 @@ class prefix extends Command {
 
                 if (!data) {
                     return message.channel.send({
-                        embed: {
+                        embeds: [{
                             title: message.guild.name,
                             color: this.client.config.embed.color,
                             description: `Prefix \`${require("../../config/bot.json").prefix}\`\n\nDo you want to change the prefix?\nUse \`${require("../../config/bot.json").prefix}prefix <prefix>\``
-                        }
+                        }]
                     });
                 } else {
                     return message.channel.send({
-                        embed: {
+                        embeds: [{
                             title: message.guild.name,
                             color: this.client.config.embed.color,
                             description: `Prefix \`${data.prefix}\`\n\nDo you want to change the prefix?\nUse \`${data.prefix}prefix <prefix>\``
-                        }
+                        }]
                     });
                 };
             });
         };
 
         if (!prefix.length > 8) {
-            return message.channel.send(this.emoji.cross + " Prefix should be below 8 chars");
+            return message.channel.send({ content: this.emoji.cross + " Prefix should be below 8 chars"});
         };
         
         Schema.findOne({ _id: message.guild.id }, async (error, data) => {
@@ -63,28 +63,28 @@ class prefix extends Command {
             if (!data) {
 
                 if (prefix === require("../../config/bot.json").prefix) {
-                    return message.channel.send(this.emoji.cross + " Prefix is already `!` by default.");
+                    return message.channel.send({ content: this.emoji.cross + " Prefix is already `!` by default."});
                 };
                 
                 data = new Schema({ _id: message.guild.id, prefix: prefix });
 
-                message.channel.send(this.emoji.tick + ` Prefix has been set to ${prefix}`);
+                message.channel.send({ content: this.emoji.tick + ` Prefix has been set to ${prefix}`});
 
                 data.save();
             } else {
 
                 if (prefix === require("../../config/bot.json").prefix) {
                     return await Schema.findOneAndDelete({ _id: message.guild.id }).then(() => {
-                        return message.channel.send(this.emoji.tick + " Prefix has been reset");
+                        return message.channel.send({ content: this.emoji.tick + " Prefix has been reset"});
                     });
                 };
 
                 if (prefix === data.prefix) {
-                    return message.channel.send(this.emoji.cross + ` Prefix is already set to \`${prefix}\``);
+                    return message.channel.send({ content: this.emoji.cross + ` Prefix is already set to \`${prefix}\``});
                 };
 
                 return data.updateOne({ id: message.guild.id, prefix: prefix }).then(() => {
-                    return message.channel.send(this.emoji.tick + ` Prefix has been set to \`${prefix}\``);
+                    return message.channel.send({ content: this.emoji.tick + ` Prefix has been set to \`${prefix}\``});
                 });
             };
         });
