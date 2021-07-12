@@ -26,7 +26,7 @@ class bot extends Command {
     async exec (message, args) {
 
         return message.channel.send({
-            embed: {
+            embeds: [{
                 title: "Client Info",
                 description: "A basic moderation bot for your server that can help your moderators to moderate the server smoothly.",
                 color: this.client.config.embed.color,
@@ -40,7 +40,7 @@ class bot extends Command {
                     },
                     {
                         name: "ID",
-                        value: this.client.user.id
+                        value: `${this.client.user.id}`
                     },
                     {
                         name: "Version",
@@ -48,14 +48,14 @@ class bot extends Command {
                     },
                     {
                         name: "Guilds",
-                        value: this.client.guilds.cache.size
+                        value: `${this.client.guilds.cache.size}`
                     },
                     {
                         name: "Users",
-                        value: this.client.users.cache.size
+                        value: `${this.client.users.cache.size}`
                     }
                 ]
-            }
+            }]
         });
     };
 };
