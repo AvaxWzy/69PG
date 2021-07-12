@@ -32,7 +32,7 @@ class uptime extends Command {
         let seconds = Math.floor(this.client.uptime / 1000) % 60;
 
         return message.channel.send({
-            embed: {
+            embeds: [{
                 title: "Uptime",
                 thumbnail: {
                     url: this.client.user.displayAvatarURL()
@@ -40,7 +40,7 @@ class uptime extends Command {
                 description: `\`\`\`ini\n[ ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds ]\n\`\`\``,
                 color: this.config.embed.color,
                 timestamp: Date.now()
-            }
+            }]
         });
     };
 };
