@@ -16,9 +16,10 @@ class Client extends require("discord.js").Client {
     constructor() {
         super({
             messageCacheLifetime: 10e20,
-            disableMentions: "everyone",
-            ws: {
-                intents: ["GUILDS", "GUILD_MEMBERS", "GUILD_MESSAGES"]
+            intents: ["GUILDS", "GUILD_MEMBERS", "GUILD_MESSAGES", "GUILD_BANS", "GUILD_EMOJIS", "DIRECT_MESSAGES"],
+            allowedMentions: {
+                parse: ["users", "roles"],
+                repliedUser: true
             }
         });
 
