@@ -27,7 +27,7 @@ class server extends Command {
     async exec (message, args) {
 
         return message.channel.send({
-            embed: {
+            embeds: [{
                 title: message.guild.name,
                 color: this.config.embed.color,
                 thumbnail: {
@@ -65,10 +65,10 @@ class server extends Command {
                         .replace("LOW", "Low")
                         .replace("MEDIUM", "Medium")
                         .replace("HIGH", "High")
-                        .replace("VERY_HIGH", "Very High")
+                        .replace("VERY_High", "Very High")
                     }
                 ]
-            }
+            }]
         });
     };
 };
