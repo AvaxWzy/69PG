@@ -39,7 +39,7 @@ class message extends Event {
             return;
         };
 
-        if (message.channel.type !== "text") {
+        if (message.channel.type !== "GUILD_TEXT") {
             return;
         };
 
