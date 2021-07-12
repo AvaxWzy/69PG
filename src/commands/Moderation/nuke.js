@@ -29,15 +29,15 @@ class nuke extends Command {
 
     async exec(message, args) {
 
-        const m = await message.channel.send(
-            ":warning: Are you sure want to nuke this channel?\n\n**Note:** It deletes and creates with same name\n\nType `yes` or `no`"
-        );
+        const m = await message.channel.send({
+            content: ":warning: Are you sure want to nuke this channel?\n\n**Note:** It deletes and creates with same name\n\nType `yes` or `no`"
+        });
 
         if (message.channel.deletable !== true) {
 
-            return message.channel.send(
-                ":warning: This channel is not deletable"
-            );
+            return message.channel.send({
+                content: ":warning: This channel is not deletable"
+            });
         };
 
         const reason = args.join(" ");
@@ -57,7 +57,7 @@ class nuke extends Command {
 
                 message.channel.clone().then(channel => {
                     channel.send({
-                        embed: {
+                        embeds: [{
                             title: "Nuked",
                             color: this.config.embed.color,
                             description: "The previous channel has nuked and replaced with this one.",
@@ -74,19 +74,19 @@ class nuke extends Command {
                                     value: reason ? reason : "No Reason"
                                 }
                             ]
-                        }
+                        }]
                     });
                     channel.setPosition(message.channel.position);
                 });
 
-                message.channel.delete(`Nuked | ${message.author.tag}`);
+                message.channel.delete({ content: `Nuked | ${message.author.tag}`});
             } else
                 if (x.content.toLowerCase() === "no") {
                     collector.stop();
 
-                    return message.channel.send("Alright! The process has been cancelled");
+                    return message.channel.send({ content: "Alright! The process has been cancelled"});
                 } else {
-                    return message.channel.send(":warning: The input is invalid and should be `yes` or `no`");
+                    return message.channel.send({ content: ":warning: The input is invalid and should be `yes` or `no`"});
                 };
         });
 
@@ -94,7 +94,7 @@ class nuke extends Command {
 
             if (!x.size) {
                 m.delete();
-                message.channel.send("⏱️ Timed out.\n\nPlease try again later.");
+                message.channel.send({ content: "⏱️ Timed out.\n\nPlease try again later."});
             };
         });
     };
