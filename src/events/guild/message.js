@@ -12,6 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.*/
 
+const { Message } = require("discord.js");
 const Event = require("../../class/Event");
 const Schema = require("../../models/config");
 
@@ -78,11 +79,11 @@ class message extends Event {
 
                 command.memberPermissions.forEach(x => {
 
-                    if (!message.member.hasPermission(x)) {
+                    if (!message.member.permissions.has(x)) {
                         array.push("\n`" + x + "`");
                     };
                 });
-                
+
                 if (array.length) {
                     return message.channel.send(`You need the following permissions: \n${array.join("\n")}`)
                 };
@@ -94,7 +95,7 @@ class message extends Event {
 
                 command.clientPermissions.forEach(x => {
 
-                    if (!message.guild.me.hasPermission(x)) {
+                    if (!message.guild.me.permissions.has(x)) {
                         array.push("\n`" + x + "`");
                     };
                 });
