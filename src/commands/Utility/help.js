@@ -31,7 +31,7 @@ class help extends Command {
 
         if (!args[0]) {
             return message.channel.send({
-                embed: {
+                embeds: [{
                     title: "Help",
                     description: `For a specific command help. Simply use \`!help <command>\`\nIf you have any command suggestion or want to hang out. Join our [server](${this.client.config.discord.server})`,
                     color: this.config.embed.color,
@@ -53,7 +53,7 @@ class help extends Command {
                             value: "`whois`, `server`"
                         }
                     ]
-                }
+                }]
             })
         } else {
 
@@ -63,31 +63,31 @@ class help extends Command {
 
             if (command) {
                 return message.channel.send({
-                    embed: {
+                    embeds: [{
                         title: command.name,
                         description: "Brackets in the usage are used to show required and optional argument:\n\n<> Required\n[] Optional",
                         color: this.config.embed.color,
                         fields: [
                             {
                                 name: "Description",
-                                value: command.description,
+                                value: `${command.description ?? "None"}`,
                                 inline: true
                             },
                             {
                                 name: "How To Use",
-                                value: command.howtouse,
+                                value: `${command.howtouse ?? "None"}`,
                                 inline: true
                             },
                             {
                                 name: "Aliases",
-                                value: command.aliases ? command.aliases: "None"
+                                value: `${command.aliases ?? "None"}`
                             },
                             {
                                 name: "Cooldown",
                                 value: command.cooldown + " Seconds"
                             }
                         ]
-                    }
+                    }]
                 });
             };
         };
