@@ -7,11 +7,16 @@
   "author": "Avax",
   "license": "Apache-2.0",
   "dependencies": {
-    "discord.js": "^12.5.3",
+    "@top-gg/sdk": "^3.1.2",
+    "discord.js": "^13.0.0-dev.1dcad05.1626091387",
+    "discordboats": "^1.1.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "glob": "^7.1.7",
     "moment": "^2.29.1",
-    "mongoose": "^5.12.14"
+    "mongoose": "^5.12.14",
+    "node-fetch": "^2.6.1",
+    "pretty-ms": "^7.0.1",
+    "rdl.js": "^1.0.2"
   }
 }
