@@ -42,7 +42,7 @@ class warn extends Command {
         };
 
         if (member.user.bot) {
-            return message.channel.send({ content: this.emoji.cross + " Imagine sending friend request to a bot :)"});
+            return message.channel.send({ content: this.emoji.cross + " Imagine sending a friend request to a bot :)"});
         };
 
         const reason = args.slice(1).join(" ");
