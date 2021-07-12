@@ -27,13 +27,14 @@ class invite extends Command {
 
     async exec(message, args) {
 
-        return message.channel.send("Thank you so much <3", {
-            embed: {
+        return message.channel.send({
+            content: "Thank you so much <3",
+            embeds: [{
                 title: "Invite",
                 description: "[Click here to invite the bot](" + this.config.invite.url + ")",
                 color: this.config.embed.color
-            }
-        })
+            }]
+        });
     };
 };
 
