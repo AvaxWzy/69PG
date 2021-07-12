@@ -27,7 +27,7 @@ class whois extends Command {
     constructor(client) {
         super(client, {
             name: "whois",
-            description: "User information such as created, joined and permissions count.",
+            description: "User information",
             aliases: ["userinfo", "ui"],
             cooldown: 10,
             clientPermissions: ["SEND_MESSAGES"]
@@ -39,7 +39,7 @@ class whois extends Command {
         const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
 
         return message.channel.send({
-            embed: {
+            embeds: [{
                 title: member.user.tag,
                 thumbnail: {
                     url: member.user.displayAvatarURL({ dynamic: true })
@@ -72,7 +72,7 @@ class whois extends Command {
                 footer: {
                     text: `ID: ${member.user.id}\nRequested by ${message.author.tag}`
                 }
-            }
+            }]
         });
     };
 };
