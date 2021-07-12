@@ -18,7 +18,7 @@ const Schema = require("../../models/config");
 class message extends Event {
     constructor(client) {
         super(client, {
-            name: "message"
+            name: "messageCreate"
         });
     };
 
