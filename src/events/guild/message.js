@@ -85,7 +85,7 @@ class message extends Event {
                 });
 
                 if (array.length) {
-                    return message.channel.send(`You need the following permissions: \n${array.join("\n")}`)
+                    return message.channel.send({ content: `You need the following permissions: \n${array.join("\n")}`})
                 };
             };
 
@@ -101,7 +101,7 @@ class message extends Event {
                 });
 
                 if (array.length) {
-                    return message.channel.send(`I need the following permissions: \n${array.join("\n")}`);
+                    return message.channel.send({ content: `I need the following permissions: \n${array.join("\n")}`});
                 };
             };
 
