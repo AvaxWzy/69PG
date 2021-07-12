@@ -22,7 +22,8 @@ class ready extends require("../../class/Event") {
 
     async exec () {
         
-        return console.log(`Logged into ${this.client.user.tag}`);
+        require("../../utils/statpost")(this.client);
+        console.log(`Logged into ${this.client.user.tag}`);
     };
 };
 
