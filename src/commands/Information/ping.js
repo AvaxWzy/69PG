@@ -26,11 +26,9 @@ class ping extends Command {
 
     async exec (message, args) {
 
-        const unix = Date.now();
+        return message.channel.send({ content: "Pong!"}).then(x => {
 
-        return message.channel.send("Pong").then(x => {
-
-            x.edit(`Pong! \`${Date.now() - unix}ms\``);
+            x.edit({ content: `Pong! \`${Date.now() - message.createdTimestamp}ms\``});
         });
     };
 };
