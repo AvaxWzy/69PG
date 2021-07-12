@@ -30,18 +30,18 @@ class clear extends Command {
         const amount = args[0];
 
         if (!parseInt(amount)) {
-            return message.channel.send(this.emoji.cross + " You have to give an amount to purge");
+            return message.channel.send({ content: this.emoji.cross + " You have to give an amount to purge"});
         };
 
         if (amount === 100 || amount > 100) {
 
             return message.channel.bulkDelete(100).then(() => {
                 message.channel.send({
-                    embed: {
+                    embeds: [{
                         title: "Cleared",
                         description: `\`100\` messages got cleared`,
                         color: this.config.embed.color
-                    }
+                    }]
                 }).then(x => {
                     x.delete({ timeout: 1000 * 5 });
                 });;
@@ -50,11 +50,11 @@ class clear extends Command {
         } else {
             return message.channel.bulkDelete(parseInt(amount) + 1).then(() => {
                 message.channel.send({
-                    embed: {
+                    embeds: [{
                         title: "Cleared",
                         description: `\`${amount}\` messages got cleared`,
                         color: this.config.embed.color
-                    }
+                    }]
                 }).then(x => {
                     x.delete({ timeout: 1000 * 5 });
                 });
