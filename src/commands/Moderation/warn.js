@@ -37,7 +37,7 @@ class warn extends Command {
             return message.channel.send({ content: this.emoji.cross + " You cannot warn yourself. || Cry about it ||"});
         };
 
-        if (member.user.id === message.guild.ownerID) {
+        if (member.user.id === message.guild.ownerId) {
             return message.channel.send({ content: this.emoji.cross + " || You tried 👍||"});
         };
 
