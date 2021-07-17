@@ -1,0 +1,3 @@
+{
+    "redirect_url": "https://discord.com/api/oauth2/authorize?client_id=766267194073939968&redirect_uri=http%3A%2F%2Flocalhost%3A4000%2Fauth&response_type=code&scope=identify%20guilds"
+}
