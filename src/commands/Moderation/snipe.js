@@ -26,7 +26,12 @@ class snipe extends Command {
             memberPermissions: ["MANAGE_MESSAGES"]
         });
     };
-  
+    /**
+     * 
+     * @param {Message} message 
+     * @param {String[]} args 
+     * @returns 
+     */
     async exec(message, args) {
 
         let snipe = this.client.snipes.get(message.channel.id);
@@ -40,13 +45,14 @@ class snipe extends Command {
         let content;
 
         if (text.length > 2048) {
+
             content = text.slice(0, 2048);
         } else {
             content = text;
         };
 
         return message.channel.send({
-            embed: {
+            embeds: [{
                 author: {
                     name: snipe.author.name,
                     icon_url: snipe.author.avatar
@@ -59,7 +65,7 @@ class snipe extends Command {
                 footer: {
                     text: `${require("moment")(snipe.timestamp).fromNow()}`
                 }
-            }
+            }]
         });
     };
 };
